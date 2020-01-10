@@ -12,7 +12,7 @@ module.exports = {
 		'plugin:jest/recommended',
 		'@react-native-community',
 	],
-	plugins: ['react', 'import', 'jsx-a11y', 'react-hooks'],
+	plugins: ['react', 'import', 'jsx-a11y', 'react-hooks', 'detox'],
 	rules: {
 		'react/jsx-filename-extension': [
 			1,
@@ -28,6 +28,7 @@ module.exports = {
 	},
 	env: {
 		jest: true,
+		'detox/detox': true,
 		'react-native/react-native': true,
 	},
 	settings: {

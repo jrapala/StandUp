@@ -6,12 +6,17 @@
 		"android": "react-native run-android",
 		"ios": "react-native run-ios",
 		"start": "react-native start",
-		"test": "jest",
-		"lint": "eslint ."
+		"installPods": "cd ios && bundle exec pod install",
+		"coverage": "jest --coverage && open ./coverage/lcov-report/index.html",
+		"test": "jest --coverage",
+		"lint": "eslint .",
+		"e2e:ios-debug": "detox build --configuration ios.sim.debug && detox test --configuration ios.sim.debug",
+		"e2e:ios-release": "detox build --configuration ios.sim.release && detox test --configuration ios.sim.release",
+		"e2e:android-debug": "detox build --configuration android.emu.debug && detox test --configuration android.emu.debug -l verbose"
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "lint-staged"
+			"pre-commit": "npm audit && npm t && lint-staged"
 		}
 	},
 	"lint-staged": {
@@ -32,6 +37,8 @@
 		"@react-native-community/eslint-config": "^0.0.6",
 		"@react-native-community/eslint-plugin": "^1.0.0",
 		"babel-jest": "^24.9.0",
+		"cross-env": "^6.0.3",
+		"detox": "^15.1.1",
 		"eslint": "^6.8.0",
 		"eslint-config-prettier": "^6.9.0",
 		"eslint-plugin-import": "^2.19.1",
@@ -48,6 +55,46 @@
 		"react-test-renderer": "16.9.0"
 	},
 	"jest": {
-		"preset": "react-native"
+		"preset": "react-native",
+		"testPathIgnorePatterns": [
+			"<rootDir>/e2e"
+		]
+	},
+	"detox": {
+		"configurations": {
+			"ios.sim.debug": {
+				"binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/StandUp.app",
+				"build": "xcodebuild -workspace ios/StandUp.xcworkspace -scheme StandUp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+				"type": "ios.simulator",
+				"device": {
+					"type": "iPhone 11 Pro"
+				}
+			},
+			"ios.sim.release": {
+				"binaryPath": "ios/build/Build/Products/Release-iphonesimulator/StandUp.app",
+				"build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/StandUp.xcworkspace -UseNewBuildSystem=NO -scheme StandUp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -quiet",
+				"type": "ios.simulator",
+				"device": {
+					"type": "iPhone 11 Pro"
+				}
+			},
+			"android.emu.debug": {
+				"binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+				"build": "cd android ; ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug ; cd -",
+				"type": "android.emulator",
+				"device": {
+					"avdName": "Pixel_3_API_29"
+				}
+			},
+			"android.emu.release": {
+				"binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
+				"build": "cd android ; ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release ; cd -",
+				"type": "android.emulator",
+				"device": {
+					"avdName": "Pixel_3_API_29"
+				}
+			}
+		},
+		"test-runner": "jest"
 	}
 }
