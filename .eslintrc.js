@@ -25,6 +25,7 @@ module.exports = {
 		'react-hooks/exhaustive-deps': 'warn',
 		semi: 0,
 		'react-native/sort-styles': 'warn',
+		'jest/no-jasmine-globals': 0,
 	},
 	env: {
 		jest: true,
