@@ -1,5 +1,7 @@
 const iOSDarkTheme = {
 	colors: {
+		gradient01: '#26BFAD',
+		gradient02: '#25B72A',
 		mainAccent050: '#E9F9F7',
 		mainAccent100: '#D4F2EF',
 		mainAccent150: '#BEECE6',
