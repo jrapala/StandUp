@@ -46,5 +46,6 @@ module.exports = {
 		react: {
 			version: 'detect',
 		},
+		'import/ignore': ['react-navigation', 'react-native-linear-gradient'],
 	},
 }

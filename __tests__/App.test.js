@@ -4,7 +4,8 @@
 
 import 'react-native'
 import React from 'react'
-import App from '../src/index'
+import App from '../src/App'
+jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer'
