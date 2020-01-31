@@ -1,4 +1,7 @@
 const iOSDarkTheme = {
+	borders: {
+		borderRadius: '10px',
+	},
 	colors: {
 		gradient01: '#26BFAD',
 		gradient02: '#25B72A',

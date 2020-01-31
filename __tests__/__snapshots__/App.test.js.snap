@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<BVLinearGradient
+  className="src__Background-sc-1h2x9uc-0 dgTxM"
+  colors={
+    Array [
+      4280729517,
+      4280661802,
+    ]
+  }
+  endPoint={
+    Object {
+      "x": 0.5,
+      "y": 1,
+    }
+  }
+  locations={null}
+  startPoint={
+    Object {
+      "x": 0.5,
+      "y": 0,
+    }
+  }
+>
+  <RCTSafeAreaView
+    className="src__AppSafeAreaView-sc-1h2x9uc-1 dkKQDV"
+    emulateUnlessSupported={true}
+  >
+    <Text
+      className="src__MainText-sc-1h2x9uc-2 jkFBLO"
+    >
+      Stand Up
+    </Text>
+    <View
+      accessible={true}
+      focusable={false}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "bottom": "15%",
+          "opacity": 1,
+          "position": "absolute",
+        }
+      }
+    >
+      <Text
+        className="Button__StyledText-sc-1m7mjh8-1 btsyEk"
+        componentTheme="dark"
+      >
+        Get Started
+      </Text>
+    </View>
+  </RCTSafeAreaView>
+</BVLinearGradient>
+`;
