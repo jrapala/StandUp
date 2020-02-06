@@ -68,6 +68,7 @@ const iOSDarkTheme = {
 		h2: '26px',
 		h3: '22px',
 		h4: '18px',
+		timer: '62px',
 	},
 }
 
