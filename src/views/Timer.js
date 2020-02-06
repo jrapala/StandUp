@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Button, SafeAreaView, Text, View } from 'react-native'
+import { SafeAreaView, Text, View } from 'react-native'
 import styled from 'styled-components'
+import StartButton from '../components/StartButton'
 
 const Timer = () => {
 	const [time, setTime] = useState(300000)
@@ -8,11 +9,6 @@ const Timer = () => {
 
 	function toggle() {
 		setIsActive(!isActive)
-	}
-
-	function reset() {
-		setTime(300000)
-		setIsActive(false)
 	}
 
 	function convertMilliseconds(ms) {
@@ -41,11 +37,15 @@ const Timer = () => {
 					dateStyle: 'full',
 				})}
 			</DateText>
+
 			<TimerView>
 				<TimerText>{convertMilliseconds(time)}</TimerText>
 			</TimerView>
-			<Button title={isActive ? 'Pause' : 'Start'} onPress={toggle} />
-			<Button title="Reset" onPress={reset} />
+			<ButtonView>
+				<StartButton onPress={toggle}>
+					{isActive ? 'Pause' : 'Start'}
+				</StartButton>
+			</ButtonView>
 		</AppSafeAreaView>
 	)
 }
@@ -62,6 +62,7 @@ const DateText = styled(Text)`
 	margin-left: 40px;
 	margin-top: 10%;
 `
+
 const TimerText = styled(Text)`
 	color: ${props => props.theme.colors.secondaryAccent050};
 	font-size: ${props => props.theme.fontSize.timer};
@@ -70,6 +71,12 @@ const TimerView = styled(View)`
 	align-items: center;
 	height: 50%;
 	justify-content: center;
+`
+
+const ButtonView = styled(View)`
+	align-items: center;
+	justify-content: center;
+	height: 30%;
 `
 
 export default Timer
