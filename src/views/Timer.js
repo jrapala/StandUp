@@ -3,7 +3,7 @@ import { Button, SafeAreaView, Text, View } from 'react-native'
 import styled from 'styled-components'
 
 const Timer = () => {
-	const [time, setTime] = useState(1000)
+	const [time, setTime] = useState(300000)
 	const [isActive, setIsActive] = useState(false)
 
 	function toggle() {
