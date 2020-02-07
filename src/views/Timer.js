@@ -1,34 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { SafeAreaView, Text, View } from 'react-native'
 import styled from 'styled-components'
 import StartButton from '../components/StartButton'
+import useTimer from '../hooks/useTimer'
 
 const Timer = () => {
-	const [time, setTime] = useState(300000)
-	const [isActive, setIsActive] = useState(false)
-
-	function toggle() {
-		setIsActive(!isActive)
-	}
-
-	function convertMilliseconds(ms) {
-		var minutes = Math.floor(ms / 60000)
-		var seconds = ((ms % 60000) / 1000).toFixed(0)
-		return minutes + ':' + (seconds < 10 ? '0' : '') + seconds
-	}
-
-	useEffect(() => {
-		let interval = null
-
-		if (isActive && time > 0) {
-			interval = setInterval(() => {
-				setTime(ms => ms - 1000)
-			}, 1000)
-		} else if (!isActive && time !== 0) {
-			clearInterval(interval)
-		}
-		return () => clearInterval(interval)
-	}, [isActive, time])
+	const [time, toggle, isActive] = useTimer(300000)
 
 	return (
 		<AppSafeAreaView>
@@ -39,7 +16,7 @@ const Timer = () => {
 			</DateText>
 
 			<TimerView>
-				<TimerText>{convertMilliseconds(time)}</TimerText>
+				<TimerText>{time}</TimerText>
 			</TimerView>
 			<ButtonView>
 				<StartButton onPress={toggle} componentTheme="light">
