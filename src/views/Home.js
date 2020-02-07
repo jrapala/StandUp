@@ -1,39 +1,27 @@
 import React from 'react'
 import { SafeAreaView, StyleSheet, Text } from 'react-native'
-import { iOSDarkTheme } from '../styles'
 import styled from 'styled-components'
 import 'react-native-gesture-handler'
-import LinearGradient from 'react-native-linear-gradient'
 import Button from '../components/Button'
 
 const Home = ({ navigation }) => {
 	return (
-		<Background
-			colors={[
-				iOSDarkTheme.colors.gradient01,
-				iOSDarkTheme.colors.gradient02,
-			]}
-		>
-			<AppSafeAreaView>
-				<MainText>Stand Up</MainText>
-				<Button
-					containerStyles={styles.buttonContainer}
-					componentTheme="dark"
-					onPress={() => navigation.navigate('Timer')}
-				>
-					Get Started
-				</Button>
-			</AppSafeAreaView>
-		</Background>
+		<AppSafeAreaView>
+			<MainText>Stand Up</MainText>
+			<Button
+				containerStyles={styles.buttonContainer}
+				componentTheme="light"
+				onPress={() => navigation.navigate('Timer')}
+			>
+				Get Started
+			</Button>
+		</AppSafeAreaView>
 	)
 }
 
-const Background = styled(LinearGradient)`
-	flex: 1;
-`
-
 const AppSafeAreaView = styled(SafeAreaView)`
 	align-items: center;
+	background-color: ${props => props.theme.colors.secondaryAccent950};
 	flex: 1;
 	justify-content: center;
 `

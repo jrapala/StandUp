@@ -43,7 +43,7 @@ const Timer = () => {
 			</TimerView>
 			<ButtonView>
 				<StartButton onPress={toggle}>
-					{isActive ? 'Pause' : 'Start'}
+					{isActive ? '⏸' : '▶️'}
 				</StartButton>
 			</ButtonView>
 		</AppSafeAreaView>
@@ -75,8 +75,8 @@ const TimerView = styled(View)`
 
 const ButtonView = styled(View)`
 	align-items: center;
-	justify-content: center;
 	height: 30%;
+	justify-content: center;
 `
 
 export default Timer

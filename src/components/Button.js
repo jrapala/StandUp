@@ -19,8 +19,8 @@ const StyledButton = styled(TouchableOpacity)`
 	align-items: center;
 	background-color: ${props =>
 		props.componentTheme === 'dark'
-			? props.theme.colors.primary700
-			: props.theme.colors.primary100};
+			? props.theme.colors.secondaryAccent950
+			: props.theme.colors.secondaryAccent350};
 	border-radius: ${props => props.theme.borders.borderRadius};
 	font-weight: 400;
 	height: 50px;
@@ -31,8 +31,8 @@ const StyledButton = styled(TouchableOpacity)`
 const StyledText = styled(Text)`
 	color: ${props =>
 		props.componentTheme === 'dark'
-			? props.theme.colors.primary100
-			: props.theme.colors.primary700};
+			? props.theme.colors.secondaryAccent350
+			: props.theme.colors.secondaryAccent950};
 	font-size: ${props => props.theme.fontSize.h3};
 `
 
