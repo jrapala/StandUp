@@ -42,8 +42,8 @@ const Timer = () => {
 				<TimerText>{convertMilliseconds(time)}</TimerText>
 			</TimerView>
 			<ButtonView>
-				<StartButton onPress={toggle}>
-					{isActive ? '⏸' : '▶️'}
+				<StartButton onPress={toggle} componentTheme="light">
+					{isActive ? 'Pause' : 'Start'}
 				</StartButton>
 			</ButtonView>
 		</AppSafeAreaView>

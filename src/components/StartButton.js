@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components'
 
 const StartButton = ({
@@ -15,7 +15,11 @@ const StartButton = ({
 			activeOpacity={0.75}
 			onPress={onPress}
 		>
-			<StyledText componentTheme={componentTheme}>{children}</StyledText>
+			<Circle>
+				<StyledText componentTheme={componentTheme}>
+					{children}
+				</StyledText>
+			</Circle>
 		</StyledButton>
 	)
 }
@@ -38,7 +42,20 @@ const StyledText = styled(Text)`
 		props.componentTheme === 'dark'
 			? props.theme.colors.secondaryAccent350
 			: props.theme.colors.secondaryAccent950};
-	font-size: ${props => props.theme.fontSize.timer};
+	font-size: ${props => props.theme.fontSize.h3};
+`
+
+const Circle = styled(View)`
+	align-items: center;
+	border-color: ${props =>
+		props.componentTheme === 'dark'
+			? props.theme.colors.secondaryAccent400
+			: props.theme.colors.secondaryAccent900};
+	border-radius: 100px;
+	border-width: 2px;
+	height: 90px;
+	justify-content: center;
+	width: 90px;
 `
 
 export default StartButton
