@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
-import { convertMillisecondsToMinutes } from '../utils/convertMillisecondsToMinutes'
+import {
+	convertMillisecondsToMinutes,
+	getPercentComplete,
+} from '../utils/timeHelpers'
 
 const useTimer = startingTimeinMS => {
 	const [time, setTime] = useState(startingTimeinMS)
@@ -22,7 +25,12 @@ const useTimer = startingTimeinMS => {
 		return () => clearInterval(interval)
 	}, [isActive, time])
 
-	return [convertMillisecondsToMinutes(time), toggle, isActive]
+	return [
+		convertMillisecondsToMinutes(time),
+		getPercentComplete(time, startingTimeinMS),
+		toggle,
+		isActive,
+	]
 }
 
 export default useTimer

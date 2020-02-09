@@ -3,9 +3,11 @@ import { SafeAreaView, Text, View } from 'react-native'
 import styled from 'styled-components'
 import StartButton from '../components/StartButton'
 import useTimer from '../hooks/useTimer'
+import AnimatedCircularProgress from '../components/AnimatedCircularProgress'
+import { iOSDarkTheme } from '../styles'
 
 const Timer = () => {
-	const [time, toggle, isActive] = useTimer(300000)
+	const [time, percentComplete, toggle, isActive] = useTimer(3000)
 
 	return (
 		<AppSafeAreaView>
@@ -16,7 +18,20 @@ const Timer = () => {
 			</DateText>
 
 			<TimerView>
-				<TimerText>{time}</TimerText>
+				<AnimatedCircularProgress
+					size={350}
+					width={15}
+					fill={percentComplete}
+					tintColor={iOSDarkTheme.colors.secondaryAccent350}
+					backgroundColor={iOSDarkTheme.colors.secondaryAccent800}
+					onAnimationComplete={() =>
+						console.log('onAnimationComplete')
+					}
+				>
+					<TimerText>
+						{isActive && percentComplete === 0 ? 'Done!' : time}
+					</TimerText>
+				</AnimatedCircularProgress>
 			</TimerView>
 			<ButtonView>
 				<StartButton onPress={toggle} componentTheme="light">
@@ -46,13 +61,13 @@ const TimerText = styled(Text)`
 `
 const TimerView = styled(View)`
 	align-items: center;
-	height: 50%;
+	height: 60%;
 	justify-content: center;
 `
 
 const ButtonView = styled(View)`
 	align-items: center;
-	height: 30%;
+	height: 20%;
 	justify-content: center;
 `
 
