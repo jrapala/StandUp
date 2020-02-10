@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView, Text, View } from 'react-native'
 import styled from 'styled-components'
 import StartButton from '../components/StartButton'
@@ -7,7 +7,8 @@ import AnimatedCircularProgress from '../components/AnimatedCircularProgress'
 import { iOSDarkTheme } from '../styles'
 
 const Timer = () => {
-	const [time, percentComplete, toggle, isActive] = useTimer(3000)
+	const [time, percentComplete, toggle, isActive] = useTimer(5000)
+	const [timerText, setTimerText] = useState(time)
 
 	return (
 		<AppSafeAreaView>
@@ -24,13 +25,15 @@ const Timer = () => {
 					fill={percentComplete}
 					tintColor={iOSDarkTheme.colors.secondaryAccent350}
 					backgroundColor={iOSDarkTheme.colors.secondaryAccent800}
-					onAnimationComplete={() =>
-						console.log('onAnimationComplete')
-					}
+					onAnimationComplete={() => {
+						if (percentComplete === 0) {
+							setTimerText('Done!')
+						} else {
+							setTimerText(time)
+						}
+					}}
 				>
-					<TimerText>
-						{isActive && percentComplete === 0 ? 'Done!' : time}
-					</TimerText>
+					<TimerText>{timerText}</TimerText>
 				</AnimatedCircularProgress>
 			</TimerView>
 			<ButtonView>
