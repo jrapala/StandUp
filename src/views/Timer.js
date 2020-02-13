@@ -7,7 +7,7 @@ import AnimatedCircularProgress from '../components/AnimatedCircularProgress'
 import { iOSDarkTheme } from '../styles'
 
 const Timer = () => {
-	const [time, percentComplete, toggle, isActive] = useTimer(5000)
+	const [time, percentComplete, toggle, isActive] = useTimer(120000)
 	const [timerText, setTimerText] = useState(time)
 
 	return (
@@ -54,8 +54,8 @@ const DateText = styled(Text)`
 	color: ${props => props.theme.colors.secondaryAccent050};
 	font-size: ${props => props.theme.fontSize.h2};
 	font-weight: 500;
-	margin-left: 40px;
 	margin-top: 10%;
+	text-align: center;
 `
 
 const TimerText = styled(Text)`
