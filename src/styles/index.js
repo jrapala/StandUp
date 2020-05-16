@@ -1,3 +1,3 @@
-import iOSDarkTheme from './iOSDarkTheme.js'
-
-export { iOSDarkTheme }
+export * from './colors'
+export * from './typography'
+export * from './themes'

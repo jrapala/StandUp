@@ -1,10 +1,10 @@
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
-import { iOSDarkTheme } from './styles'
 import styled, { ThemeProvider } from 'styled-components'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
+import { iOSDarkTheme } from './styles'
 import HomeScreen from './views/Home'
 import TimerScreen from './views/Timer'
 import CalendarScreen from './views/Calendar'
@@ -50,9 +50,9 @@ const AppNavigator = createStackNavigator(
 	{
 		defaultNavigationOptions: {
 			headerStyle: {
-				backgroundColor: iOSDarkTheme.colors.secondaryAccent950,
+				backgroundColor: iOSDarkTheme.primaryColor,
 			},
-			headerTintColor: iOSDarkTheme.colors.secondaryAccent050,
+			headerTintColor: iOSDarkTheme.textColorOnPrimary,
 		},
 		initialRouteName: 'Home',
 	}
@@ -64,7 +64,7 @@ const HeaderRight = styled(TouchableOpacity)`
 
 const StyledText = styled(Text)`
 	color: white;
-	font-size: ${props => props.theme.fontSize.h4};
+	font-size: ${props => props.theme.fontSize.body};
 `
 const AppContainer = createAppContainer(AppNavigator)
 

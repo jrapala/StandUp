@@ -10,7 +10,6 @@ const Home = ({ navigation }) => {
 			<MainText>Stand Up</MainText>
 			<Button
 				containerStyles={styles.buttonContainer}
-				componentTheme="light"
 				onPress={() => navigation.navigate('Timer')}
 			>
 				Get Started
@@ -21,13 +20,13 @@ const Home = ({ navigation }) => {
 
 const AppSafeAreaView = styled(SafeAreaView)`
 	align-items: center;
-	background-color: ${props => props.theme.colors.secondaryAccent950};
+	background-color: ${props => props.theme.primaryColor};
 	flex: 1;
 	justify-content: center;
 `
 
 const MainText = styled(Text)`
-	color: ${props => props.theme.colors.primary050};
+	color: ${props => props.theme.textColorOnPrimary};
 	font-size: ${props => props.theme.fontSize.h1};
 	font-weight: 500;
 `

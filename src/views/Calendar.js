@@ -4,13 +4,13 @@ import styled from 'styled-components'
 import { calendarDaysInView } from '../utils/calendarHelpers'
 
 const Timer = () => {
-	const dates = calendarDaysInView(2020, 1)
+	const dates = calendarDaysInView(2020, 4)
 
 	return (
 		<AppSafeAreaView>
 			<Calendar>
 				<CalendarHeader>
-					<Month>February</Month>
+					<Month>May</Month>
 				</CalendarHeader>
 				<DaysOfWeek>
 					<Day>S</Day>
@@ -32,7 +32,7 @@ const Timer = () => {
 }
 
 const AppSafeAreaView = styled(SafeAreaView)`
-	background-color: ${props => props.theme.colors.secondaryAccent950};
+	background-color: ${props => props.theme.primaryColor};
 	flex: 1;
 `
 
@@ -42,17 +42,17 @@ const Calendar = styled(ScrollView)`
 `
 
 const CalendarHeader = styled(View)`
-	justify-content: center;
-	background-color: ${props => props.theme.colors.secondaryAccent500}};
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+	background-color: ${props => props.theme.accentColor};
+	border-top-left-radius: ${props => props.theme.borderRadius.default};
+	border-top-right-radius: ${props => props.theme.borderRadius.default};
 	height: 42px;
+	justify-content: center;
 	width: 98%;
 `
 
 const Month = styled(Text)`
-	color: ${props => props.theme.colors.secondaryAccent950}};
-	font-size: ${props => props.theme.fontSize.h3}};
+	color: ${props => props.theme.textColorOnAccent};
+	font-size: ${props => props.theme.fontSize.h4};
 	text-align: center;
 `
 const DaysOfWeek = styled(View)`
@@ -70,8 +70,8 @@ const DaysOfMonth = styled(View)`
 `
 
 const Day = styled(Text)`
-	border: 1px solid ${props => props.theme.colors.secondaryAccent500}};
-	color: white;
+	border: 1px solid ${props => props.theme.accentColor};
+	color: ${props => props.theme.textColorOnPrimary};
 	flex-basis: 14%;
 	padding: 16px;
 	text-align: center;

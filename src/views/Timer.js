@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { SafeAreaView, Text, View } from 'react-native'
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import StartButton from '../components/StartButton'
 import useTimer from '../hooks/useTimer'
 import AnimatedCircularProgress from '../components/AnimatedCircularProgress'
-import { iOSDarkTheme } from '../styles'
 
 const Timer = () => {
 	const [time, percentComplete, toggle, isActive] = useTimer(120000)
 	const [timerText, setTimerText] = useState(time)
+	const themeContext = useContext(ThemeContext)
 
 	return (
 		<AppSafeAreaView>
@@ -23,8 +23,8 @@ const Timer = () => {
 					size={350}
 					width={15}
 					fill={percentComplete}
-					tintColor={iOSDarkTheme.colors.secondaryAccent350}
-					backgroundColor={iOSDarkTheme.colors.secondaryAccent800}
+					tintColor={themeContext.secondaryColor}
+					backgroundColor={themeContext.secondaryColorInverted}
 					onAnimationComplete={() => {
 						if (percentComplete === 0) {
 							setTimerText('Done!')
@@ -37,7 +37,7 @@ const Timer = () => {
 				</AnimatedCircularProgress>
 			</TimerView>
 			<ButtonView>
-				<StartButton onPress={toggle} componentTheme="light">
+				<StartButton onPress={toggle}>
 					{isActive ? 'Pause' : 'Start'}
 				</StartButton>
 			</ButtonView>
@@ -46,20 +46,20 @@ const Timer = () => {
 }
 
 const AppSafeAreaView = styled(SafeAreaView)`
-	background-color: ${props => props.theme.colors.secondaryAccent950};
+	background-color: ${props => props.theme.primaryColor};
 	flex: 1;
 `
 
 const DateText = styled(Text)`
-	color: ${props => props.theme.colors.secondaryAccent050};
-	font-size: ${props => props.theme.fontSize.h2};
-	font-weight: 500;
+	color: ${props => props.theme.textColorOnPrimary};
+	font-size: ${props => props.theme.fontSize.h4};
+	font-weight: ${props => props.theme.fontWeight.semiBold};
 	margin-top: 10%;
 	text-align: center;
 `
 
 const TimerText = styled(Text)`
-	color: ${props => props.theme.colors.secondaryAccent050};
+	color: ${props => props.theme.textColorOnPrimary};
 	font-size: ${props => props.theme.fontSize.timer};
 `
 const TimerView = styled(View)`

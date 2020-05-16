@@ -2,23 +2,15 @@ import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components'
 
-const StartButton = ({
-	children,
-	componentTheme,
-	containerStyles,
-	onPress,
-}) => {
+const StartButton = ({ children, containerStyles, onPress }) => {
 	return (
 		<StyledButton
 			style={containerStyles}
-			componentTheme={componentTheme}
 			activeOpacity={0.75}
 			onPress={onPress}
 		>
 			<Circle>
-				<StyledText componentTheme={componentTheme}>
-					{children}
-				</StyledText>
+				<StyledText>{children}</StyledText>
 			</Circle>
 		</StyledButton>
 	)
@@ -26,10 +18,7 @@ const StartButton = ({
 
 const StyledButton = styled(TouchableOpacity)`
 	align-items: center;
-	background-color: ${props =>
-		props.componentTheme === 'dark'
-			? props.theme.colors.secondaryAccent950
-			: props.theme.colors.secondaryAccent350};
+	background-color: ${props => props.theme.secondaryColor};
 	border-radius: 100px;
 	font-weight: 400;
 	height: 100px;
@@ -38,19 +27,13 @@ const StyledButton = styled(TouchableOpacity)`
 `
 
 const StyledText = styled(Text)`
-	color: ${props =>
-		props.componentTheme === 'dark'
-			? props.theme.colors.secondaryAccent350
-			: props.theme.colors.secondaryAccent950};
-	font-size: ${props => props.theme.fontSize.h3};
+	color: ${props => props.theme.textColorOnSecondary};
+	font-size: ${props => props.theme.fontSize.h5};
 `
 
 const Circle = styled(View)`
 	align-items: center;
-	border-color: ${props =>
-		props.componentTheme === 'dark'
-			? props.theme.colors.secondaryAccent400
-			: props.theme.colors.secondaryAccent900};
+	border-color: ${props => props.theme.primaryColor};
 	border-radius: 100px;
 	border-width: 2px;
 	height: 90px;
