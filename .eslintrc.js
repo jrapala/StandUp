@@ -27,7 +27,6 @@ module.exports = {
 				extensions: ['.js', '.jsx', '.ts', '.tsx'],
 			},
 		],
-		'react/jsx-fragments': [1, 'syntax'],
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
 		semi: 0,
@@ -36,6 +35,7 @@ module.exports = {
 		'react-native/no-raw-text': 0,
 		'sort-keys': ['warn', 'asc', { caseSensitive: false, natural: true }],
 		'better-styled-components/sort-declarations-alphabetically': 1,
+		'import/no-named-as-default-member': 0,
 	},
 	env: {
 		jest: true,

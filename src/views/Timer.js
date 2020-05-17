@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react'
-import { SafeAreaView, Text, View } from 'react-native'
+import { Dimensions, SafeAreaView, Text, View } from 'react-native'
 import styled, { ThemeContext } from 'styled-components'
 import StartButton from '../components/CircularButton'
 import useTimer from '../hooks/useTimer'
 import AnimatedCircularProgress from '../components/AnimatedCircularProgress'
+
+const { width } = Dimensions.get('window')
 
 const Timer = () => {
 	const [time, percentComplete, toggle, isActive] = useTimer(120000)
@@ -23,7 +25,7 @@ const Timer = () => {
 
 			<TimerView>
 				<AnimatedCircularProgress
-					size={350}
+					size={width * 0.75}
 					width={15}
 					fill={percentComplete}
 					tintColor={themeContext.secondaryColor}
