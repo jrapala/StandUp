@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
+import { hide } from 'react-native-bootsplash'
 import styled, { ThemeProvider } from 'styled-components'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
@@ -10,6 +11,7 @@ import TimerScreen from './views/Timer'
 import CalendarScreen from './views/Calendar'
 
 const App = () => {
+	hide({ duration: 250 })
 	return (
 		<ThemeProvider theme={iOSDarkTheme}>
 			<AppContainer />
