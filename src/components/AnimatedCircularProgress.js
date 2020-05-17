@@ -1,9 +1,10 @@
 // Adapted from https://github.com/bartgryszko/react-native-circular-progress
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, Easing } from 'react-native'
 import CircularProgress from './CircularProgress'
+
 const AnimatedProgress = Animated.createAnimatedComponent(CircularProgress)
 
 const propTypes = {
@@ -16,7 +17,7 @@ const propTypes = {
 }
 
 const defaultProps = {
-	duration: 300,
+	duration: 100,
 	easing: Easing.out(Easing.ease),
 	prefill: 100,
 	useNativeDriver: false,
@@ -33,15 +34,15 @@ const AnimatedCircularProgress = ({
 	tintColorSecondary,
 	...props
 }) => {
-	const [fillAnimation] = useState(new Animated.Value(prefill))
+	const fillAnimation = useRef(new Animated.Value(prefill))
 
 	useEffect(() => {
-		const anim = Animated.timing(fillAnimation, {
+		const animation = Animated.timing(fillAnimation.current, {
 			duration,
 			easing,
 			toValue: fill,
 		})
-		anim.start(onAnimationComplete)
+		animation.start(onAnimationComplete)
 	}, [duration, easing, fill, fillAnimation, onAnimationComplete])
 
 	const animateColor = () => {
@@ -49,7 +50,7 @@ const AnimatedCircularProgress = ({
 			return tintColor
 		}
 
-		const tintAnimation = fillAnimation.interpolate({
+		const tintAnimation = fillAnimation.current.interpolate({
 			inputRange: [0, 100],
 			outputRange: [tintColor, tintColorSecondary],
 		})
@@ -59,7 +60,7 @@ const AnimatedCircularProgress = ({
 	return (
 		<AnimatedProgress
 			{...props}
-			fill={fillAnimation}
+			fill={fillAnimation.current}
 			tintColor={animateColor()}
 		>
 			{children}
