@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components'
 
-const StartButton = ({ children, containerStyles, onPress }) => {
+const CircularButton = ({ children, containerStyles, onPress }) => {
 	return (
 		<StyledButton
 			style={containerStyles}
@@ -41,4 +41,4 @@ const Circle = styled(View)`
 	width: 90px;
 `
 
-export default StartButton
+export default CircularButton

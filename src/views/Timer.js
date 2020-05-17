@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { SafeAreaView, Text, View } from 'react-native'
 import styled, { ThemeContext } from 'styled-components'
-import StartButton from '../components/StartButton'
+import StartButton from '../components/CircularButton'
 import useTimer from '../hooks/useTimer'
 import AnimatedCircularProgress from '../components/AnimatedCircularProgress'
 

@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, Easing } from 'react-native'
-import CircularProgress from './CircularProgress'
+import CircularProgress from '../CircularProgress'
 
 const AnimatedProgress = Animated.createAnimatedComponent(CircularProgress)
 
