@@ -13,8 +13,11 @@ const Timer = () => {
 	return (
 		<AppSafeAreaView>
 			<DateText>
-				{new Date().toLocaleDateString(undefined, {
-					dateStyle: 'full',
+				{new Date().toLocaleDateString('en-US', {
+					day: 'numeric',
+					month: 'short',
+					weekday: 'long',
+					year: 'numeric',
 				})}
 			</DateText>
 
