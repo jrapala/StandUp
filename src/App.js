@@ -51,6 +51,7 @@ const AppNavigator = createStackNavigator(
 		defaultNavigationOptions: {
 			headerStyle: {
 				backgroundColor: iOSDarkTheme.primaryColor,
+				shadowColor: 'transparent',
 			},
 			headerTintColor: iOSDarkTheme.textColorOnPrimary,
 		},
